@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FirstAmen Blog</title>
+<meta name="description" content="Articles from the FirstAmen team about prayer, habits and mornings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#140F12;--soft:#5E5560;--pink:#F0529C;--violet:#B04FD8;--indigo:#7D5BE8;--sun:#FFC928;--paper:#FFF9F4;--card:#fff}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--violet)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--indigo);outline-offset:3px;border-radius:6px}
+.wrap{max-width:760px;margin:0 auto;padding:48px 24px 72px}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin:0 0 8px}
+.page-title{font-size:clamp(34px,6vw,52px);margin:0 0 28px}
+.meta{color:var(--soft);font-size:15px}
+
+/* index */
+.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.list a.entry{display:block;background:var(--card);border-radius:22px;padding:22px 26px;text-decoration:none;color:var(--ink);box-shadow:0 14px 34px rgba(176,79,216,.12);transition:transform .15s}
+.list a.entry:hover{transform:translateY(-2px)}
+.entry .t{display:block;font-size:20px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+.empty,.notice{background:var(--card);border-radius:22px;padding:26px;color:var(--soft);box-shadow:0 14px 34px rgba(176,79,216,.12)}
+.more{margin-top:18px;font:600 16px Poppins,system-ui,sans-serif;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:13px 28px;cursor:pointer}
+
+/* article */
+.back{display:inline-block;margin-bottom:26px;font-weight:600;text-decoration:none}
+.back:hover{text-decoration:underline}
+.article h1{font-size:clamp(32px,5.4vw,48px);margin:0 0 10px}
+.article .meta{margin:0 0 30px}
+.body{font-size:18px}
+.body h2{font-size:28px;margin:1.8em 0 .5em}
+.body h3{font-size:21px;margin:1.5em 0 .4em}
+.body p{margin:0 0 1.1em}
+.body ul,.body ol{padding-left:1.4em;margin:0 0 1.2em}
+.body li{margin-bottom:.4em}
+.body blockquote{margin:1.4em 0;padding:4px 0 4px 20px;border-left:4px solid var(--pink);color:var(--soft)}
+.body code{background:#F2E9F7;border-radius:6px;padding:2px 6px;font-size:.92em}
+.body .tablewrap{overflow-x:auto;margin:0 0 1.2em}
+.body table{border-collapse:collapse;width:100%;font-size:16px}
+.body th,.body td{border-bottom:1px solid #E7DCEA;padding:10px 12px;text-align:left;vertical-align:top}
+.body th{font-weight:700}
+.toc{background:var(--card);border-radius:22px;padding:20px 26px;margin:0 0 1.6em;box-shadow:0 14px 34px rgba(176,79,216,.12)}
+.toc h2{font-size:18px;margin:0 0 8px}
+.toc ol{margin:0;padding-left:1.3em}
+.toc li{margin-bottom:.3em;font-size:16px}
+[dir=rtl] .body ul,[dir=rtl] .body ol,[dir=rtl] .toc ol{padding-left:0;padding-right:1.4em}
+[dir=rtl] .body blockquote{border-left:0;border-right:4px solid var(--pink);padding:4px 20px 4px 0}
+@media (prefers-reduced-motion:reduce){.list a.entry{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap" id="app" aria-live="polite"><p class="meta">Loading&hellip;</p></main>
+
+<script>
+(function () {
+  'use strict';
+  // HeyCatch blog key: publishable (read-only, this site's published articles only).
+  var HEYCATCH_API_KEY = 'hck_lv_a5d1bea2c0ff7f9530cdba1f';
+  var API = 'https://api.heycatch.ai/v1';
+  var SITE_LANG = 'en';
+  var app = document.getElementById('app');
+  var memo = {}; // last good responses, kept for the visit
+
+  /* ---------- helpers ---------- */
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmtDate(iso) {
+    var d = new Date(String(iso || '').slice(0, 10) + 'T00:00:00');
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  function meta(a) {
+    var parts = [];
+    var d = fmtDate(a.published || a.published_at);
+    if (d) parts.push(esc(d));
+    if (a.read_time) parts.push(esc(a.read_time) + ' min read');
+    return parts.join(' &middot; ');
+  }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  // Plain GET, key as the only query parameter, no custom headers.
+  function api(path, params, retried) {
+    var q = 'key=' + encodeURIComponent(HEYCATCH_API_KEY);
+    Object.keys(params || {}).forEach(function (k) { q += '&' + k + '=' + encodeURIComponent(params[k]); });
+    var url = API + path + '?' + q;
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = ctl ? setTimeout(function () { ctl.abort(); }, 15000) : null;
+    return fetch(url, ctl ? { signal: ctl.signal } : undefined).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res.status === 429 && !retried) {
+        var wait = Math.min(parseInt(res.headers.get('Retry-After') || '2', 10) || 2, 30);
+        return sleep(wait * 1000).then(function () { return api(path, params, true); });
+      }
+      if (!res.ok) { var e = new Error('HTTP ' + res.status); e.status = res.status; throw e; }
+      return res.json();
+    }, function (err) { if (timer) clearTimeout(timer); throw err; });
+  }
+
+  /* ---------- sanitiser (allow-list, runs before anything is inserted) ---------- */
+  var ALLOWED = { H2:1,H3:1,H4:1,P:1,UL:1,OL:1,LI:1,TABLE:1,THEAD:1,TBODY:1,TFOOT:1,TR:1,TH:1,TD:1,
+                  BLOCKQUOTE:1,A:1,STRONG:1,EM:1,CODE:1,PRE:1,BR:1,B:1,I:1,HR:1,SPAN:1 };
+  var DROP = { SCRIPT:1,STYLE:1,IFRAME:1,OBJECT:1,EMBED:1,FORM:1,INPUT:1,BUTTON:1,TEXTAREA:1,SELECT:1,LINK:1,META:1,SVG:1,MATH:1,TEMPLATE:1 };
+  function safeHref(h) {
+    h = String(h || '').trim();
+    if (h.charAt(0) === '#') return h;
+    try {
+      var u = new URL(h, 'https://repdbylove.com/');
+      return (u.protocol === 'http:' || u.protocol === 'https:' || u.protocol === 'mailto:') ? h : null;
+    } catch (e) { return null; }
+  }
+  function cleanNode(src, dst) {
+    Array.prototype.forEach.call(src.childNodes, function (n) {
+      if (n.nodeType === 3) { dst.appendChild(document.createTextNode(n.nodeValue)); return; }
+      if (n.nodeType !== 1) return;
+      var tag = n.tagName;
+      if (DROP[tag]) return;
+      if (!ALLOWED[tag]) { cleanNode(n, dst); return; } // unknown tag: keep its text, lose the tag
+      var el = document.createElement(tag);
+      if (tag === 'A') {
+        var h = safeHref(n.getAttribute('href'));
+        if (h) {
+          el.setAttribute('href', h);
+          if (h.charAt(0) !== '#' && h.indexOf('mailto:') !== 0) { el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener noreferrer'); }
+        }
+      }
+      if (tag === 'H2' && n.getAttribute('id')) el.setAttribute('id', n.getAttribute('id')); // TOC targets
+      if ((tag === 'TH' || tag === 'TD') && n.getAttribute('colspan')) el.setAttribute('colspan', String(parseInt(n.getAttribute('colspan'), 10) || 1));
+      cleanNode(n, el);
+      dst.appendChild(el);
+    });
+  }
+  function sanitize(html) {
+    var doc = new DOMParser().parseFromString('<body>' + String(html || '') + '</body>', 'text/html');
+    var out = document.createElement('div');
+    cleanNode(doc.body, out);
+    Array.prototype.forEach.call(out.querySelectorAll('table'), function (t) { // scroll wide tables
+      var w = document.createElement('div'); w.className = 'tablewrap';
+      t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
+    return out;
+  }
+
+  /* ---------- head tags ---------- */
+  function setMeta(sel, attrs) {
+    var el = document.head.querySelector(sel);
+    if (!el) { el = document.createElement('meta'); document.head.appendChild(el); }
+    Object.keys(attrs).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+  }
+  function setHead(title, desc, type) {
+    document.title = title;
+    setMeta('meta[name="description"]', { name: 'description', content: desc });
+    setMeta('meta[property="og:title"]', { property: 'og:title', content: title });
+    setMeta('meta[property="og:description"]', { property: 'og:description', content: desc });
+    setMeta('meta[property="og:type"]', { property: 'og:type', content: type });
+  }
+
+  /* ---------- views ---------- */
+  function showEmpty(msg) {
+    app.innerHTML = '<p class="eyebrow">FirstAmen</p><h1 class="page-title">Blog</h1><div class="empty">' + esc(msg) + '</div>';
+  }
+  function show404() {
+    setHead('Article not found | FirstAmen Blog', 'This article could not be found.', 'website');
+    app.innerHTML = '<a class="back" href="#/">&larr; All articles</a><h1 class="page-title">Article not found</h1>' +
+      '<div class="notice">We could not find that article. It may have been moved or unpublished.</div>';
+  }
+
+  function fetchAll() { // every article: keep going until offset reaches total
+    var all = [];
+    function page(offset) {
+      return api('/articles', { limit: 50, offset: offset }).then(function (r) {
+        var items = r.articles || [];
+        all = all.concat(items);
+        if (items.length && all.length < (r.total || 0)) return page(offset + 50);
+        return all;
+      });
+    }
+    return page(0);
+  }
+
+  function renderIndex() {
+    setHead('FirstAmen Blog', 'Articles from the FirstAmen team about prayer, habits and mornings.', 'website');
+    app.innerHTML = '<p class="meta">Loading&hellip;</p>';
+    var p = memo.list ? Promise.resolve(memo.list) : fetchAll();
+    p.then(function (items) { memo.list = items; paintIndex(items); }, function () {
+      if (memo.list) paintIndex(memo.list); else showEmpty('No articles yet');
+    });
+  }
+  var PAGE = 20;
+  function paintIndex(items) {
+    if (!items.length) { showEmpty('No articles yet'); return; }
+    var shown = 0;
+    app.innerHTML = '<p class="eyebrow">FirstAmen</p><h1 class="page-title">Blog</h1><ul class="list" id="list"></ul>';
+    var ul = document.getElementById('list');
+    var btn = document.createElement('button');
+    btn.className = 'more'; btn.type = 'button'; btn.textContent = 'Show more articles';
+    function more() {
+      items.slice(shown, shown + PAGE).forEach(function (a) {
+        var li = document.createElement('li');
+        li.innerHTML = '<a class="entry" href="#/' + encodeURIComponent(a.slug) + '"><span class="t">' + esc(a.title) +
+          '</span><span class="meta">' + meta(a) + '</span></a>';
+        ul.appendChild(li);
+      });
+      shown = Math.min(items.length, shown + PAGE);
+      if (shown >= items.length && btn.parentNode) btn.parentNode.removeChild(btn);
+    }
+    more();
+    if (shown < items.length) app.appendChild(btn);
+    btn.addEventListener('click', more);
+  }
+
+  function renderArticle(slug) {
+    app.innerHTML = '<p class="meta">Loading&hellip;</p>';
+    var p = memo['a:' + slug] ? Promise.resolve(memo['a:' + slug]) :
+      api('/articles/' + encodeURIComponent(slug)).then(function (r) { return r.article; });
+    p.then(function (a) {
+      if (!a) { show404(); return; }
+      memo['a:' + slug] = a;
+      paintArticle(a);
+    }, function (err) {
+      if (err && err.status === 404) show404();
+      else if (memo['a:' + slug]) paintArticle(memo['a:' + slug]);
+      else showEmpty('This article could not be loaded right now. Please try again in a few minutes.');
+    });
+  }
+  function paintArticle(a) {
+    setHead(a.title + ' | FirstAmen Blog', a.meta_description || '', 'article');
+    var body = sanitize(a.content_html);
+    // table of contents: every h2 with an id, except the FAQ and the unlabeled Key takeaways heading
+    var heads = Array.prototype.filter.call(body.querySelectorAll('h2'), function (h) {
+      return h.id && h.id !== 'faq';
+    });
+    var toc = null;
+    if (heads.length) {
+      toc = document.createElement('nav'); toc.className = 'toc'; toc.setAttribute('aria-label', 'Table of contents');
+      toc.innerHTML = '<h2>Table of contents</h2><ol>' + heads.map(function (h) {
+        return '<li><a href="#' + esc(h.id) + '" data-jump="' + esc(h.id) + '">' + esc(h.textContent) + '</a></li>';
+      }).join('') + '</ol>';
+      // place after the list that follows <h2>Key takeaways</h2>, otherwise above the article
+      var kt = Array.prototype.filter.call(body.querySelectorAll('h2'), function (h) {
+        return !h.id && /^\s*key takeaways\s*$/i.test(h.textContent);
+      })[0];
+      var anchor = null;
+      if (kt) { var n = kt.nextElementSibling; if (n && (n.tagName === 'UL' || n.tagName === 'OL')) anchor = n; }
+      if (anchor) anchor.parentNode.insertBefore(toc, anchor.nextSibling); else body.insertBefore(toc, body.firstChild);
+    }
+    var lang = a.language && a.language !== SITE_LANG ? ' lang="' + esc(a.language) + '"' : '';
+    var rtl = /^(ar|he|fa|ur)(-|$)/i.test(a.language || '') ? ' dir="rtl"' : '';
+    app.innerHTML = '<a class="back" href="#/">&larr; All articles</a><article class="article"' + lang + rtl + '>' +
+      '<h1>' + esc(a.title) + '</h1><p class="meta">' + meta(a) + '</p><div class="body" id="body"></div></article>';
+    document.getElementById('body').appendChild(body);
+    window.scrollTo(0, 0);
+  }
+
+  // Table-of-contents links jump inside the page without changing the #/slug route.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[data-jump]') : null;
+    if (!a) return;
+    e.preventDefault();
+    var t = document.getElementById(a.getAttribute('data-jump'));
+    if (t) { t.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
+  });
+
+  function route() {
+    var h = decodeURIComponent((location.hash || '').replace(/^#\/?/, ''));
+    var slug = h.replace(/^blog\//, '').replace(/\/$/, '');
+    if (slug) renderArticle(slug); else renderIndex();
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+</body>
+</html>
