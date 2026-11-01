@@ -193,11 +193,10 @@ nav.site a.on{color:var(--pink);font-weight:700}
 
   /* ---------- views ---------- */
   var PLAY = 'https://play.google.com/store/apps/details?id=com.rork.firstamen';
-  var HOW = 'https://repdbylove.com/firstamen';
   function intro() {
     return '<aside class="side"><div class="eyebrow">Blog</div><h1>Prayer, habits and <span class="hl">mornings.</span></h1>' +
       '<p>Short reads from the FirstAmen team.</p><div class="btns"><a class="btn" href="' + PLAY + '">Get it on Google Play</a>' +
-      '<a class="btn2" href="' + HOW + '">How it works</a></div></aside>';
+      '</div></aside>';
   }
   function layout(side, main, cls) {
     app.className = 'cols ' + (cls || '');
