@@ -19,6 +19,8 @@ const OUT = process.env.OUT_DIR || '_site';
 const BASE_PATH = new URL(BASE_URL).pathname.replace(/\/$/, ''); // '/firstamen-blog' or ''
 const PLAY = 'https://play.google.com/store/apps/details?id=com.rork.firstamen';
 const SITE = 'https://repdbylove.com';
+// Google Search Console ownership check (shown in the page head so Google can verify the site).
+const GOOGLE_VERIFY = 'F7BWcUdsvUYeFd7PT_M83cKnotfcooED19_10rigQtA';
 
 const CSS = `
 :root{--ink:#14100F;--soft:#5E5A62;--pink:#C73F67;--gold:#8C6420;--nav:#F0F7FF;--card:#FDFEFF;--pale:#E8F1FD}
@@ -182,6 +184,7 @@ function shell({ title, desc, type, canonical, head = '', cls, main, robots }) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="${GOOGLE_VERIFY}">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 ${robots ? `<meta name="robots" content="${robots}">\n` : ''}${canonical ? `<link rel="canonical" href="${esc(canonical)}">\n` : ''}<meta property="og:title" content="${esc(title)}">
