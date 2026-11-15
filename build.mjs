@@ -9,7 +9,7 @@ import * as cheerio from 'cheerio';
 
 // ---- settings ----------------------------------------------------------------------------
 // HeyCatch blog key: publishable (read-only, this site's published articles only), safe in source.
-const KEY = process.env.HEYCATCH_API_KEY || 'hck_lv_a5d1bea2c0ff7f9530cdba1f';
+const KEY = process.env.HEYCATCH_API_KEY || 'hck_lv_04c05753d17dd77c9e641ac0';
 const API = (process.env.HEYCATCH_API_BASE || 'https://api.heycatch.ai/v1').replace(/\/$/, '');
 // Where this blog is served. When you move it to your own domain, change this one line
 // (for example 'https://blog.repdbylove.com') and every canonical link and the sitemap follow.
