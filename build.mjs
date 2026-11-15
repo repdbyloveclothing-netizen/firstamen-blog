@@ -196,6 +196,14 @@ ${canonical ? `<meta property="og:url" content="${esc(canonical)}">\n` : ''}<met
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 <style>${CSS}</style>
+<script type="module">
+import { analytics } from 'https://esm.sh/@heycatch/sdk@0.8.5';
+analytics.init({
+  projectKey: 'hck_pk_rZQKDYhERoeO0XV5UW9_2V11-OCbWEyy',
+  site: 'landing',
+  install: { framework: 'web', agent: 'claude-code' },
+});
+</script>
 ${head}</head>
 <body>
 ${NAV}
