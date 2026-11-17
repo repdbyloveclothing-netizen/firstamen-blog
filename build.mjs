@@ -89,6 +89,16 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:700;margin:0}
 .body th,.body td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 .body th{color:#fff}
 [dir=rtl] .body ul,[dir=rtl] .body ol{padding-left:0;padding-right:1.4em}
+.cta{margin:2.2em 0 0;padding:34px 32px;background:var(--bg3);border:1px solid var(--line2);border-radius:20px;text-align:center}
+.cta h2{font-size:30px;line-height:1.15;color:#fff;margin:0 0 10px;text-wrap:balance}
+.cta p{margin:0 auto 22px;max-width:30em;font-size:17px;color:var(--body);line-height:1.6}
+.cta .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn.ghost{background:transparent;color:var(--gold);border:1.5px solid var(--line2)}
+.btn.ghost:hover{background:transparent;color:var(--gold2);border-color:var(--gold)}
+.sidecta{margin-top:20px;padding:22px 24px}
+.sidecta b{display:block;font-family:'Fraunces',Georgia,serif;font-size:18px;color:#fff;line-height:1.25;margin-bottom:8px}
+.sidecta p{margin:0 0 14px;font-size:14px;color:var(--soft);line-height:1.5}
+.sidecta .btn{display:block;text-align:center;padding:12px 16px;font-size:15px}
 .toc2{display:block}.toc-inline{display:none}
 @media (max-width:899px){
   .hero h1{font-size:42px}
@@ -96,6 +106,9 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:700;margin:0}
   .cols-article{grid-template-columns:minmax(0,1fr);gap:28px}
   .side{position:static}
   .toc2{display:none}.toc-inline{display:block}
+  .sidecta{display:none}
+  .cta{padding:26px 20px}
+  .cta h2{font-size:25px}
   .artcol{padding:28px 22px 24px}
   .artcol h1{font-size:34px}
   .body p,.body ul,.body ol{font-size:17px}
@@ -258,6 +271,9 @@ function ldScript(ld, canonical) {
   return `<script type="application/ld+json">${JSON.stringify(out).replace(/</g, '\\' + 'u003c')}</script>\n`;
 }
 
+const ctaBlock = `<section class="cta" lang="en" dir="ltr" aria-labelledby="cta-h"><h2 id="cta-h">Wake up to prayer, not a snooze.</h2><p>FirstAmen is a prayer alarm that does not stop until you pray out loud. Try one free practice prayer during setup. You will make a free account first.</p><div class="btns"><a class="btn" href="${PLAY}" target="_blank" rel="noopener">Get it on Google Play</a><a class="btn ghost" href="${SITE}/firstamen#how" target="_blank" rel="noopener">See how it works</a></div></section>`;
+const sideCta = `<div class="card sidecta" lang="en" dir="ltr"><b>Pray out loud to stop your alarm.</b><p>Try a free practice prayer in FirstAmen.</p><a class="btn" href="${PLAY}" target="_blank" rel="noopener">Get it on Google Play</a></div>`;
+
 function articlePage(a) {
   const canonical = `${BASE_URL}/${encodeURIComponent(a.slug)}/`;
   const { html, side } = buildBody(a.content_html);
@@ -266,8 +282,8 @@ function articlePage(a) {
   return shell({
     title: `${a.title} | FirstAmen Blog`, desc: a.meta_description || '', type: 'article', canonical,
     head: ldScript(a.jsonLd, canonical), cls: 'cols-article',
-    main: `<aside class="side"><a class="back" href="${BASE_PATH}/">&larr; All articles</a>${side}</aside>` +
-      `<article class="card artcol"${lang}${rtl}><div class="eyebrow">From the blog</div><h1>${esc(a.title)}</h1><p class="meta ameta">${esc(metaLine(a))}</p><div class="body">${html}</div></article>`,
+    main: `<aside class="side"><a class="back" href="${BASE_PATH}/">&larr; All articles</a>${side}${sideCta}</aside>` +
+      `<article class="card artcol"${lang}${rtl}><div class="eyebrow">From the blog</div><h1>${esc(a.title)}</h1><p class="meta ameta">${esc(metaLine(a))}</p><div class="body">${html}</div>${ctaBlock}</article>`,
   });
 }
 
