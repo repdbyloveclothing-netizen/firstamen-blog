@@ -209,8 +209,25 @@ import { analytics } from 'https://esm.sh/@heycatch/sdk@0.8.5';
 analytics.init({
   projectKey: 'hck_pk_rZQKDYhERoeO0XV5UW9_2V11-OCbWEyy',
   site: 'landing',
+  requestBatching: false,
   install: { framework: 'web', agent: 'claude-code' },
 });
+var page = location.pathname;
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var u; try { u = new URL(a.getAttribute('href'), location.href); } catch (x) { return; }
+  var sec = a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : a.closest('section[id]') ? a.closest('section[id]').id : a.closest('article') ? 'article' : 'page';
+  if (u.hostname === 'play.google.com') analytics.trackEvent('play_click', { location: sec, page: page });
+  else if (u.hostname === 'repdbylove.com' && u.pathname.indexOf('/firstamen') === 0) analytics.trackEvent('site_link_click', { location: sec, page: page, to: u.pathname + u.hash });
+  else if (u.pathname.indexOf('/firstamen-blog') === 0) analytics.trackEvent('blog_link_click', { location: sec, page: page });
+}, true);
+var pr = document.getElementById('pricing');
+if (pr && 'IntersectionObserver' in window) {
+  new IntersectionObserver(function (en, o) {
+    if (en[0].isIntersecting) { analytics.trackEvent('pricing_viewed', { page: page }); o.disconnect(); }
+  }, { threshold: 0.4 }).observe(pr);
+}
 </script>
 ${head}</head>
 <body>
