@@ -2,9 +2,12 @@
   "name": "firstamen-blog",
   "private": true,
   "type": "module",
-  "scripts": { "build": "node build.mjs" },
+  "scripts": {
+    "build": "node build-site.mjs"
+  },
   "dependencies": {
     "cheerio": "1.0.0",
+    "marked": "^18.3.0",
     "sanitize-html": "2.13.0"
   }
 }
