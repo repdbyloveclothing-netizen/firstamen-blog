@@ -23,9 +23,15 @@ You can build a real daily morning prayer habit with free YouTube videos: pick a
 
 Search "morning prayer" on YouTube and three formats dominate the results.
 
+### Christian guided prayer videos
+
 The largest group. A voice prays over soft music for roughly 10 to 30 minutes, often titled "prayer to start your day" or "grace for purpose morning prayer." You listen, agree aloud where you can, and the video ends. These suit the reader who wants words supplied rather than composed.
 
+### Jewish and Islamic prayer recordings
+
 Search Shacharit or Fajr and you find longer recordings, often 20 minutes to an hour, in Hebrew or Arabic with occasional translation. The structure is fixed liturgy recited at set times, closer to following along than to listening.
+
+### Livestreamed services and devotions
 
 Parishes and ministries stream morning services or daily devotions at a scheduled hour. These are communal and time-bound: you join when they happen, not whenever you wake.
 
@@ -35,7 +41,11 @@ All three share one weakness: YouTube has no way to make you press play before y
 
 Both traditions anchor the day in set prayer, but the videos you'll find for each differ sharply in structure and tone.
 
+### Shacharit: structure, Hebrew, and length
+
 Shacharit videos usually follow a fixed liturgy: blessings, the Shema, and the Amidah, often recited in Hebrew with transliteration on screen. The full texts are available free on [Sefaria](https://www.sefaria.org), so you can follow along even without a printed siddur. Searchers encounter two main formats: full-length services running well over half an hour, and shorter "Shacharit at home" guides for people without a minyan. The structure is the point. You follow the siddur page by page, and the video keeps pace for you.
+
+### Fajr: recitation, adhan, and timing
 
 Fajr videos center on Quran recitation, frequently opening with the adhan or a recited portion of Surah Al-Fajr. Because Fajr is tied to dawn, many videos are timed aids: recitations you play at first light, often with the Arabic text displayed for those praying along. Length varies more than Shacharit, from a few minutes of recitation to extended sessions.
 
@@ -45,7 +55,11 @@ What both share is fixedness. If your own morning prayer keeps collapsing at the
 
 'Grace for purpose' style videos are short, spoken Christian prayers set over calm music, usually opening with gratitude, moving through scripture, and closing with a declaration for the day. Search "morning prayer youtube" and this format fills the results because it asks nothing of you: press play, listen, and start your day.
 
+### Why this format dominates Christian search results
+
 It wins on friction. A structured liturgy like Shacharit, the Jewish morning service with its fixed blessings and benedictions, can run substantial length and rewards practice. A grace-for-purpose video needs no book, no Hebrew, no prior routine. For a lapsed Christian rebuilding a prayer streak, low friction is exactly the appeal, and exactly the weakness.
+
+### Listening vs praying along
 
 Passive listening feels like prayer but often isn't. The fix is small: pray out loud after the video ends, or pause and respond to each line. If you keep breaking the habit at the wake-up moment, an alarm that won't let you snooze past your intention, like [FirstAmen](https://repdbylove.com/), pairs well with any video you choose.
 
@@ -68,7 +82,11 @@ Pick the shortest option you will actually finish on your worst morning, not you
 
 ## How do you turn a YouTube morning prayer video into a daily habit?
 
+### The phone-first wake-up problem
+
 You already reach for your phone when you wake up. The habit isn't the problem; the direction of it is. YouTube works until it doesn't: the video ends, the app is still open, and the next video is one tap away. A streak of faithfulness dies not because you stopped wanting to pray, but because the tool you prayed with is also the tool built to keep you scrolling.
+
+### A repeatable 5-step routine framework
 
 Pick one video and stick with it for a week, so the decision is made before you're awake enough to make it. Set the video as your alarm sound or place it on your home screen, so prayer is the first thing you touch, not the second. Pray out loud along with it, even quietly, because spoken words are harder to sleep through than listened ones. Close the app the moment the video ends and note the day as kept, building your prayer streak one morning at a time. And decide tonight what tomorrow's first act will be, because the intending-but-lapsed pattern breaks when the choice happens the evening before, not at 6 a.m. with a snooze button under your thumb.
 
@@ -85,6 +103,8 @@ The honest hierarchy: pray out loud along with the video, listen when you're bar
 YouTube fails at the moment that matters most: waking up. You reach for your phone, see a notification, and the prayer video competes with everything else on the screen. There is nothing forcing the video to play before you start scrolling, so the intention to pray depends entirely on willpower you do not have at 6 a.m.
 
 A dedicated prayer alarm app removes that choice. FirstAmen has no dismiss button, so you cannot silence it the way you snooze a normal alarm. The alarm itself becomes the accountability: pray first, then start your day.
+
+### Running FirstAmen through the same criteria
 
 By the standards earlier sections applied to YouTube videos, FirstAmen wins on consistency and loses on variety. You get one structured daily prayer at a fixed time, not a library of traditions to browse. If you want to explore Shacharit, Fajr, or Kreupasanam recordings, YouTube is the better tool. If your problem is a broken streak of faithfulness, a prayer alarm with no dismiss button is built for exactly that.
 
