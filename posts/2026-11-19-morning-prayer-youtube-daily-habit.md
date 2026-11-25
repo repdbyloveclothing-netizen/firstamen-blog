@@ -1,9 +1,9 @@
 ---
-title: Morning Prayer YouTube: Build a Habit That Lasts
+title: "Morning Prayer YouTube: Build a Habit That Lasts"
 slug: morning-prayer-youtube-daily-habit
 date: 2026-11-19
 status: published
-description: Compare Shacharit, Fajr, grace-for-purpose, and Kreupasanam morning prayer YouTube videos, then build a daily habit that survives the snooze button.
+description: "Compare Shacharit, Fajr, grace-for-purpose, and Kreupasanam morning prayer YouTube videos, then build a daily habit that survives the snooze button."
 keywords: morning prayer youtube, youtube morning prayer, morning prayer hebrew, morning prayer jewish, morning prayer judaism, spiritual discipline, grace for purpose morning prayer, islam morning prayer, kreupasanam morning prayer
 ---
 

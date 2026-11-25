@@ -1,9 +1,9 @@
 ---
-title: Morning Prayer Orthodox: A Two-Minute Daily Rule
+title: "Morning Prayer Orthodox: A Two-Minute Daily Rule"
 slug: morning-prayer-orthodox-short-daily-rule
 date: 2026-11-22
 status: published
-description: A morning prayer orthodox rule you can keep: the Trisagion plus one troparion takes two minutes, with exact texts and a timed walkthrough.
+description: "A morning prayer orthodox rule you can keep: the Trisagion plus one troparion takes two minutes, with exact texts and a timed walkthrough."
 keywords: morning prayer orthodox, morning prayer orthodox christian, orthodox morning prayer, morning prayer for family, morning prayer short, morning prayer universalis, prayer before work, short morning prayer, morning prayer catholic daily offering
 ---
 

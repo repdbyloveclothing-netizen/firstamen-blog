@@ -1,9 +1,9 @@
 ---
-title: Why You Need an Accountability Partner for Morning Prayer
+title: "Why You Need an Accountability Partner for Morning Prayer"
 slug: why-you-need-an-accountability-partner
 date: 2026-11-23
 status: published
-description: Why you need an accountability partner for morning prayer: a spoken commitment plus daily check-ins measurably raise follow-through and protect your streak.
+description: "Why you need an accountability partner for morning prayer: a spoken commitment plus daily check-ins measurably raise follow-through and protect your streak."
 keywords: why you need an accountability partner
 ---
 
