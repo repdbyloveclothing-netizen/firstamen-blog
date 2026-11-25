@@ -1,9 +1,9 @@
 ---
-title: How to Wake Up Early: Fix Your Body Clock
+title: "How to Wake Up Early: Fix Your Body Clock"
 slug: how-to-wake-up-early
 date: 2026-11-15
 status: published
-description: Learn how to wake up early by fixing the real cause: late melatonin, alarm dependence, or chronotype. Get a 15-minute schedule shift that sticks.
+description: "Learn how to wake up early by fixing the real cause: late melatonin, alarm dependence, or chronotype. Get a 15-minute schedule shift that sticks."
 keywords: how wake up early, tips for wake up early, wake up early in the morning, how to wake up early as a teenager, how to wake up early without an alarm, how to sleep and wake up early, is it better to wake up early, sleep early wake up early quotes, why does melatonin wake me up early
 ---
 
