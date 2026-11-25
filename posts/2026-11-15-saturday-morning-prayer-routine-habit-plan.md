@@ -1,9 +1,9 @@
 ---
-title: Saturday Morning Prayer: Routine, Prayers, and Habit Plan
+title: "Saturday Morning Prayer: Routine, Prayers, and Habit Plan"
 slug: saturday-morning-prayer-routine-habit-plan
 date: 2026-11-15
 status: published
-description: A 15-minute Saturday morning prayer routine with copy-ready prayers, paired Scripture, and a habit plan built to survive the snooze button.
+description: "A 15-minute Saturday morning prayer routine with copy-ready prayers, paired Scripture, and a habit plan built to survive the snooze button."
 keywords: saturday morning prayer, morning prayer
 ---
 

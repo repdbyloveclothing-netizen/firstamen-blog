@@ -1,9 +1,9 @@
 ---
-title: Miracle Morning Routine: A Step-by-Step Guide for Christians
+title: "Miracle Morning Routine: A Step-by-Step Guide for Christians"
 slug: miracle-morning-routine-christians-pray-first
 date: 2026-11-15
 status: published
-description: A Christian miracle morning routine built on SAVERS with prayer first. Fits in 15 minutes, includes an ADHD-friendly reorder and a no-dismiss alarm trick.
+description: "A Christian miracle morning routine built on SAVERS with prayer first. Fits in 15 minutes, includes an ADHD-friendly reorder and a no-dismiss alarm trick."
 keywords: miracle morning routine, best morning routine, morning routine chart, morning routine face, morning routine ideas, adhd morning routine, morning routine list, my morning routine, skincare morning routine
 ---
 

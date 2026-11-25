@@ -1,9 +1,9 @@
 ---
-title: Joy in the Morning Devotional: A 15-Minute Routine
+title: "Joy in the Morning Devotional: A 15-Minute Routine"
 slug: joy-in-the-morning-devotional
 date: 2026-11-17
 status: published
-description: A joy in the morning devotional in 15 minutes: wake, scripture, prayer, music, message. Learn Psalm 30:5 and build a lasting habit.
+description: "A joy in the morning devotional in 15 minutes: wake, scripture, prayer, music, message. Learn Psalm 30:5 and build a lasting habit."
 keywords: joy in the morning devotional, morning devotional audio, morning devotional book, morning devotional meaning, morning devotional message, morning devotional music, morning devotional prayers, morning devotional quotes, morning devotional sda
 ---
 
