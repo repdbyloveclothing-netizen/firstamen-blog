@@ -2,7 +2,7 @@
 title: A Prayer to Start the Day: Pray First, Then Begin
 slug: prayer-to-start-the-day
 date: 2026-11-24
-status: draft
+status: published
 description: Try a prayer to start the day, then build a simple morning routine that helps you pray before the snooze button, phone, or work takes over.
 keywords: prayer to start the day, short morning prayer, morning prayer, prayer before work
 ---
