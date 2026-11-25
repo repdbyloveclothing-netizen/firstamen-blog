@@ -1,9 +1,9 @@
 ---
-title: Quiet Time Bible Study: A Habit That Survives the Morning
+title: "Quiet Time Bible Study: A Habit That Survives the Morning"
 slug: quiet-time-bible-study-habit
 date: 2026-11-19
 status: published
-description: Build a quiet time bible study habit that survives the alarm: pick a time, method, and 15-minute structure you can keep, starting tomorrow morning.
+description: "Build a quiet time bible study habit that survives the alarm: pick a time, method, and 15-minute structure you can keep, starting tomorrow morning."
 keywords: quiet time bible study
 ---
 

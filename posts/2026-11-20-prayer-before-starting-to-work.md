@@ -1,9 +1,9 @@
 ---
-title: A Prayer Before Starting to Work: Texts for Every Morning
+title: "A Prayer Before Starting to Work: Texts for Every Morning"
 slug: prayer-before-starting-to-work
 date: 2026-11-20
 status: published
-description: Full texts for a prayer before starting to work: Catholic, Orthodox, hospital, and Friday versions, each under two minutes, so your day starts with prayer.
+description: "Full texts for a prayer before starting to work: Catholic, Orthodox, hospital, and Friday versions, each under two minutes, so your day starts with prayer."
 keywords: prayer before starting to work, catholic prayer before work, prayer for guidance before work, prayer before work in hospital, orthodox prayer before work, friday morning prayer before work, prayer before starting work, prayer before going to work, prayer before starting work in office
 ---
 
