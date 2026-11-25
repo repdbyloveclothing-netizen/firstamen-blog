@@ -1,9 +1,9 @@
 ---
-title: Morning Prayer for the Day: 7 Short Prayers That Stick
+title: "Morning Prayer for the Day: 7 Short Prayers That Stick"
 slug: morning-prayer-for-the-day
 date: 2026-11-21
 status: published
-description: Seven short morning prayer for the day scripts, one per weekday, each under 60 seconds, plus the alarm-anchor habit that keeps you praying every morning.
+description: "Seven short morning prayer for the day scripts, one per weekday, each under 60 seconds, plus the alarm-anchor habit that keeps you praying every morning."
 keywords: morning prayer for the day, morning prayer catholic daily, morning devotional prayer, morning prayer to start the day, accountability partner, exercise morning routine, morning prayer monday, morning prayer sunday, morning routine with workout
 ---
 
